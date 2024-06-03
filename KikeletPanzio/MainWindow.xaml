@@ -1,0 +1,85 @@
+﻿<Window x:Class="KikeletPanzio.MainWindow"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:local="clr-namespace:KikeletPanzio"
+            mc:Ignorable="d"
+            Title="Kikelet Panzió" Height="800" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="450" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Bal oldali panel -->
+        <StackPanel Grid.Column="0" Margin="10">
+            <TextBlock Margin="5" FontWeight="Bold" Text="Ügyfél Regisztráció" FontSize="16"/>
+
+            <!-- Ügyfelek regisztrációja -->
+            <StackPanel Margin="5">
+                <TextBlock Text="Ügyfelek regisztrációja" FontSize="16" FontWeight="Bold" TextWrapping="Wrap"/>
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <TextBlock VerticalAlignment="Center" Text="Név:" Width="100" TextWrapping="Wrap"/>
+                    <TextBox x:Name="tbxUgyfelNev" Width="200"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <TextBlock VerticalAlignment="Center" Text="Születési dátum: " Width="100" TextWrapping="Wrap"/>
+                    <DatePicker x:Name="dpSzulIdo" Width="200"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <TextBlock VerticalAlignment="Center" Text="E-mail: " Width="100" TextWrapping="Wrap"/>
+                    <TextBox x:Name="tbxEmail" Width="200"/>
+                </StackPanel>
+                <Button Content="Regisztráció" Width="100" Margin="5" Click="Regisztral_Click"/>
+            </StackPanel>
+
+            <!-- Regisztrált Ügyfelek -->
+            <StackPanel Margin="5">
+                <TextBlock Text="Regisztált ügyfelek" FontWeight="Bold" FontSize="16" TextWrapping="Wrap"/>
+                <ListBox x:Name="lbRegisztraltUgyfel" Height="150"/>
+            </StackPanel>
+            
+            <!-- Statisztika -->
+            <StackPanel Grid.Column="0" Margin="10">
+                <TextBlock Margin="5" FontWeight="Bold" Text="Statisztikák" FontSize="16" TextWrapping="Wrap" />
+
+                <TextBlock Margin="5" FontWeight="Bold" Text="Összes bevétel" TextWrapping="Wrap" />
+                <TextBlock Margin="5" Text="Bevétel: " TextWrapping="Wrap" x:Name="txtOsszesBevetel"/>
+
+                <TextBlock Margin="5" FontWeight="Bold" Text="Legtöbbet kiadott szoba" TextWrapping="Wrap"/>
+                <TextBlock Margin="5" Text="Szoba száma: " TextWrapping="Wrap" x:Name="txtLegtobbetKiadottSzoba"/>
+
+                <TextBlock Margin="5" FontWeight="Bold" Text="Fizetett összeg szerint csökkenő sorrend" TextWrapping="Wrap"/>
+                <ListBox x:Name="lbFizetettOsszegSzerint" Height="150"/>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Foglalás-->
+        <StackPanel Grid.Column="1" Margin="10">
+            <TextBlock Margin="5" FontWeight="Bold" Text="Szállásfoglalás" FontSize="16"/>
+            <StackPanel Margin="5">
+                <TextBlock FontSize="16" Text="Szállásfoglalás" FontWeight="Bold" TextWrapping="Wrap"/>
+                <TextBlock Margin="5" Text="Ügyfél" TextWrapping="Wrap"/>
+                <ComboBox x:Name="cbxUgyfelek" Width="200" Margin="5" DisplayMemberPath="Name"/>
+                <TextBlock Margin="5" Text="Szobák" TextWrapping="Wrap"/>
+                <ComboBox x:Name="lbxSzobak" Width="200" Margin="5"/>
+                <TextBlock Margin="5" Text="Érkezés dátuma:" TextWrapping="Wrap"/>
+                <DatePicker x:Name="dpErkezesDatum" Margin="5" SelectedDateChanged="DatePicker_SelectedDateChanged"/>
+                <TextBlock Margin="5" Text="Távozás dátuma:" TextWrapping="Wrap"/>
+                <DatePicker x:Name="dpTavozasDatum" Margin="5" SelectedDateChanged="DatePicker_SelectedDateChanged"/>
+                <TextBlock Margin="5" Text="Főszám:" TextWrapping="Wrap" />
+                <TextBox x:Name="tbxFoszam" Margin="5"/>
+                <TextBlock Margin="5" Text="Éjszaka száma:" TextWrapping="Wrap"/>
+                <TextBlock x:Name="tbxEjszakakSzama" Margin="5"/>
+            </StackPanel>
+            <Button Content="Foglalás" Width="100" Margin="5" Name="btnFoglal" Click="btnFoglal_Click_1"/>
+
+            <!-- Foglalt szobák listája -->
+            <StackPanel Margin="5">
+                <TextBlock Text="Foglalt szobák" FontWeight="Bold" FontSize="16" TextWrapping="Wrap"/>
+                <ListBox x:Name="lbFoglaltSzobak" Height="150"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
